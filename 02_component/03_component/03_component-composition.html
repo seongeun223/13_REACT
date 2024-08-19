@@ -22,21 +22,21 @@
         */
         // 순수 함수 : 함수의 입력만이 함수의 결과에 영향을 주는 것
 
-        // var a = 5;
-        // var c = 3;
 
-        // function add(a, b) {
-        //     return a + b;
+        // let name = '홍길동';
+        // let age = 20;
+        // let phone = '010-1234-5678';
+        // let email = 'hong123@gmail.com';
+
+        // const user = {
+        //     name: 'name',
+        //     age: age,
+        //     phone: 'phone',
+        //     email: 'email',
         // }
 
-        // var c = 10;
-
-        // function add2(a, b) {
-        //     return a + b + c;
-        // }
-
-        // add2(a, b);
-
+        // 프로퍼티 단축 구문
+        // const user = {name, age, phone, email};
 
         const user = {
             name: '홍길동',
@@ -45,8 +45,11 @@
             email: 'hong123@gmail.com',
         }
 
+        // 구조분해할당
+        const {name, phone} = user;
+
         function NameCard() {
-            return <h1>{user.name}</h1>
+            return <h1>{user.name}</h1> // 엘리먼트
         }
 
         function AgeCard() {
@@ -63,6 +66,7 @@
             return <h3 style={{ backgroundColor: 'yellow' }}>{user.email}</h3>
         }
 
+        // CBD (Component Based Development)
         function UserInfo() {
             return (
                 <div style={{width: 300, border: '1px solid black', padding: 10}}>
