@@ -7,6 +7,7 @@ function App() {
       <h1>menu!</h1>
       <MenuInfo/>
       <MenuInfo2/>
+      <MenuInfo3/>
     </div>
   );
 }
@@ -22,6 +23,13 @@ const menu2 = {
   name: '곱창국수',
   price: 17500,
   category: '식사',
+  orderableStatus: 'Y',
+}
+
+const menu3 = {
+  name: '메뚜기튀김',
+  price: 2000,
+  category: '간식',
   orderableStatus: 'Y',
 }
   
@@ -45,11 +53,12 @@ function OrderableStatusCard() {
 
 function MenuInfo() {
   return (
-      <div style={{width: 300, border: '1px solid black', padding: 10}}>
+      <div style={{width: 300, border: '3px solid yellow', padding: 10}}>
           <NameCard/>
           <PriceCard/>
           <CategoryCard/>
           <OrderableStatusCard/>
+          <button onClick={onClickHandler}>선택</button>
       </div>
   )
 }
@@ -73,13 +82,47 @@ function OrderableStatusCard2() {
 
 function MenuInfo2() {
   return (
-      <div style={{width: 300, border: '1px solid black', padding: 10}}>
+      <div style={{width: 300, border: '3px solid yellow', padding: 10}}>
           <NameCard2/>
           <PriceCard2/>
           <CategoryCard2/>
           <OrderableStatusCard2/>
+          <button onClick={onClickHandler}>선택</button>
       </div>
   )
+}
+
+function NameCard3() {
+  return <h1>{menu3.name}</h1>
+}
+function PriceCard3() {
+  return <h2 style={{ color: 'purple' }}>{menu3.price}</h2>
+}
+
+
+function CategoryCard3() {
+  return <h3 style={{ color: 'red' }}>{menu3.category}</h3>
+}
+
+// EmailCard 컴포넌트 user.email style -> 바탕색을 yellow
+function OrderableStatusCard3() {
+  return <h3 style={{ backgroundColor: 'yellow' }}>{menu3.orderableStatus}</h3>
+}
+
+function MenuInfo3() {
+  return (
+      <div style={{width: 300, border: '3px solid yellow', padding: 10}}>
+          <NameCard3/>
+          <PriceCard3/>
+          <CategoryCard3/>
+          <OrderableStatusCard3/>
+          <button onClick={onClickHandler}>선택</button>
+      </div>
+  )
+}
+
+const onClickHandler = () => {
+  alert('주문이 완료되었습니다!')
 }
 
 export default App;
