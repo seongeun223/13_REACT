@@ -62,10 +62,11 @@
             //     )
             // }
 
+            // 3. component에 이벤트를 props로 전달 후 연결
             render() {
 
                 const {onClick, children} = this.props
-                
+
                 return(
                     <button onClick={onClick}>{children}</button>
                 )
