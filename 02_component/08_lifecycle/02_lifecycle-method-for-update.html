@@ -92,7 +92,7 @@
                 */
                 console.log('getSnapshotBeforeUpdate');
                 
-                return null;
+                // return null;
 
                 // componentDidUpate의 snapshot 인수(3번째)로 전달됨.
                 return {
@@ -112,7 +112,7 @@
                     세 번째 파라미터로 전달받을 수 있다.
                 */
                 console.log('ComponentDidUpdate');
-                
+                console.log(snapshot);
             }
         }
         ReactDOM.createRoot(document.getElementById('root')).render(<TimePrinter/>);
