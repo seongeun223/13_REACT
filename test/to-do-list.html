@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+
+    <style>
+        body {
+            background-color: lightblue;
+        }
+
+        header {
+            text-align: center;
+            background-color: black;
+            color: white;
+            padding: 10px;
+        }
+
+        footer {
+            text-align: center;
+            background-color: black;
+            color: white;
+            padding: 10px;
+            margin-top: 40px;
+            height: 105.88px;
+        }
+
+
+        .TodoList {
+            border: 2px solid #000;
+            /* 두께 2px, 실선, 검은색 테두리 */
+            padding: 20px;
+            /* 내용과 테두리 사이의 여백 */
+            margin: 40px;
+            /* 외부 여백 */
+            margin-left: 640px;
+            margin-right: 400px;
+            height: 500px;
+            width: 600px;
+            margin-bottom: 40px;
+            background-color: white;
+        }
+
+        h3 {
+            text-align: center;
+        }
+
+        .TodoItems {
+            text-align: center;
+        }
+
+        .button1{
+            background-color: green;
+            color: white;
+            border-radius: 3px;
+            height: 30px;
+            border-style: none;
+        }
+
+        .button2 {
+            background-color: red;
+            color: white;
+            border-radius: 50px;
+            margin-left: 10px;
+            border-style: none;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>오늘의 할 일! 2024.8.21.</h1>
+    </header>
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        const { useState } = React;
+
+        function TodoApp() {
+
+            const [todos, setTodos] = useState([
+                { id: 1, name: '할 일 목록을 추가할 것' },
+
+            ]);
+
+            const [inputText, setInputText] = useState('');
+            const [nextId, setNextId] = useState(2);
+
+            const onChangeHandler = e => setInputText(e.target.value);
+
+            const onClickHandler = () => {
+                const todosCopy = todos.concat({
+                    id: nextId,
+                    name: inputText
+                });
+
+                console.log(todosCopy);
+
+                setNextId(nextId + 1);
+                setTodos(todosCopy);
+                setInputText('');
+            }
+
+            const todoList = todos.map(text => 
+            <li key={text.id} onClick={() => onClickHandler2(text.id)}>
+                {text.name}<button className='button2' onClick={onClickHandler2}>X</button></li>);
+            // onDoubleClick={() => onRemove(name.id)}>{name.name}
+            //     </li>);
+
+            // const onRemove = id => {
+            //     // id로 넘어온(더블클릭 당한 이름의 id)와 일치하지 않는 객체만 다시 배열로 반환
+            //     // const changeNames = todos.filter(text => text.id !== id);
+            //     // setNames(changeNames);
+            // }
+
+            const onClickHandler2 = id => {
+                const changeNames = todos.filter(text => text.id !== id);
+                setTodos(changeNames);
+            }
+            return (
+                <>
+                    <div className='content'>
+                        <h3>ToDo-List</h3>
+                        <div className='TodoList'>
+                            {todoList}
+                        </div>
+                        <div className='TodoItems'>
+                            <input value={inputText} onChange={onChangeHandler} />
+                            <button className='button1' onClick={onClickHandler}>추가하기</button>
+                        </div>
+                    </div>
+
+                </>
+
+            )
+        }
+
+        function TodoList({ props }) {
+            return <li>{props.todo}</li>
+        }
+
+        function TodoItems(props) {
+
+            const todo = props.TodoList;
+            return (
+                <ul>
+                    {todo.map((text) => <TodoList name={name} key={index}></TodoList>)}
+                </ul>
+            )
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<TodoApp />);
+    </script>
+
+    <footer>
+        <h4>Copyright 2022. team-greedy all rights reserved.</h4>
+    </footer>
+</body>
+
+</html>
