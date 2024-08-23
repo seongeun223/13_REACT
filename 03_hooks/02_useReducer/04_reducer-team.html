@@ -13,38 +13,35 @@
 <body>
     <div id="root"></div>
 
-
     <script type="text/babel">
-        const { useReducer } = React; /*good*/
+        const { useReducer } = React;
 
-        function reducer(state, action){
-            console.log(action);
-            console.log(state);
-            
-            
-            return action.name
+
+
+        function reducer(state, action) {
+
+            return action = '효찬온탑' 
         }
-
-        
 
         function App() {
-            const [state, dispatch] = useReducer(reducer, '성은온탑');
 
-            const onChangeHandler = (e) => {
-                console.log(e.target);
-                
-                dispatch(e.target)
-            };
+            const onClickHandler = (e) => dispatch(e.target.name)
             
+            const name = '꾸러기로켓단'
+            const [state, dispatch] = useReducer(
+                reducer, name
+            );
+
             return (
                 <>
-                    <h1>{state}</h1>
-                    <button onClick={onChangeHandler} name='동현온탑'>왕좌탈환!</button>
+                    <h1> {state} </h1>
+                    <button onClick={onClickHandler}> 버튼 </button>
                 </>
-
             )
         }
-        ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+
     </script>
 </body>
 
