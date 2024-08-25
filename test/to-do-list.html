@@ -142,19 +142,19 @@
             )
         }
 
-        function TodoList({ props }) {
-            return <li>{props.todo}</li>
-        }
+        // function TodoList({ props }) {
+        //     return <li>{props.todo}</li>
+        // }
 
-        function TodoItems(props) {
+        // function TodoItems(props) {
 
-            const todo = props.TodoList;
-            return (
-                <ul>
-                    {todo.map((text) => <TodoList name={name} key={index}></TodoList>)}
-                </ul>
-            )
-        }
+        //     const todo = props.TodoList;
+        //     return (
+        //         <ul>
+        //             {todo.map((text) => <TodoList name={name} key={index}></TodoList>)}
+        //         </ul>
+        //     )
+        // }
 
         ReactDOM.createRoot(document.getElementById('root')).render(<TodoApp />);
     </script>
