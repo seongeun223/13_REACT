@@ -5,3 +5,5 @@ function Mypage() {
         </div>
     )
 }
+
+export default Mypage;
