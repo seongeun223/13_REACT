@@ -21,7 +21,9 @@ function MenuDetails() {
             setMenu(getMenuDetail(menuCode))
         }, []
     )
-
+    
+    console.log(menu);
+    
     return (
         <>
             <div className={detailStyle.MenuDetails}>
