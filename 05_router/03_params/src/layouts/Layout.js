@@ -4,16 +4,16 @@ import {Outlet} from 'react-router-dom';
 
 function Layout() {
 
-    const outletStyle = {
-        textAlign: 'center',
-        marginTop: '70px'
-    }
+    // const outletStyle = {
+    //     textAlign: 'center',
+    //     marginTop: '70px'
+    // }
 
     return(
         <>
         <Header/>
         <Navbar/>
-        <div style={outletStyle}>
+        <div>
         <Outlet/>
         </div>
         </>
