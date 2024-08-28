@@ -1,7 +1,7 @@
 function About() {
     return(
         <div>
-            <h1>소개 페이지</h1>
+            <h1>소개 화면</h1>
         </div>
     )
 }

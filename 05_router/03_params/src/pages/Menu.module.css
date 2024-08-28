@@ -1,4 +1,15 @@
 .MenuBox div {
     display: inline-block;
-    margin: 5px;
+    width: 200px; /* 원의 크기 */
+    height: 200px; /* 원의 크기 */
+    margin: 10px;
+    border-radius: 50%; /* 원 모양 */
+    text-align: center;
+    font-family: 'Dongle';
+    font-size: 20px;
+}
+
+.MenuDetails div {
+    border: 3px #FA5858;
+    background-color: #FA5858;
 }
