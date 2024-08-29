@@ -46,7 +46,7 @@
         // action 구조분해할당
         // type - 어떤 행위를 할 것인지
         // payload - state를 어떻게 바꿀 것인지
-        function reducer(state = initalState, { type, payload }) { // ⭐
+        function reducer(state = initalState, { type, payload }) { //
             switch (type) {
                 case 'INCREMENT':
                     return state + payload.incrementValue;
@@ -57,7 +57,7 @@
             }
         }
 
-        const store = createStore(reducer);
+        const store = createStore(reducer); // store는 하나의 리듀서만 가질 수 있다.
         function App() {
 
             /* 
