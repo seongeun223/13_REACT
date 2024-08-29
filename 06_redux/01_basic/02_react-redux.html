@@ -32,19 +32,26 @@
         //         case 'INCREAMENT':
         //             return state + action.payload.increamentValue;
         //         case 'DECREAMENT':
-        //             return state + action.payload.decreamentValue;
+        //             return state - action.payload.decreamentValue;
         //         default:
         //             return state;
         //     }
         // }
 
+        /* 
+        state를 변경하기 위한 리듀서 함수를 작성한다.
+        이 때 action은 dispatch를 호출하는 쪽에서 전달하는 state에 대한
+        주문서 개념으로 행위의 종류(type)과 state 변경에 대한 내용(payload)를 담고 있다.
+        */
         // action 구조분해할당
-        function reducer(state = initalState, { type, payload }) {
+        // type - 어떤 행위를 할 것인지
+        // payload - state를 어떻게 바꿀 것인지
+        function reducer(state = initalState, { type, payload }) { // ⭐
             switch (type) {
                 case 'INCREMENT':
-                    return state + action.payload.incrementValue;
+                    return state + payload.incrementValue;
                 case 'DECREMENT':
-                    return state + action.payload.decrementValue;
+                    return state - payload.decrementValue;
                 default:
                     return state;
             }
@@ -53,17 +60,36 @@
         const store = createStore(reducer);
         function App() {
 
-            const count = useSelector(state => state);
+            /* 
+                useSelector 훅을 이용해 store가 관리하는 state를 사용할 수 있다.
+                useSelector는 반드시 인자로 state를 매개변수로 하는 함수를
+                콜백함수로 전달해야 한다.
+            */
+            const count = useSelector(state => state); // 상태값 가져오기 ⭐
 
             // 수정할 때 사용할 dispatch 함수
-            const dispatch = useDispatch();
+            /* 
+                useDispatch 훅을 이용해서 dispatch를 호출할 수 있다. (즉, 리듀서를 호출한다.)
+                state 변경에 필요한 값(주문서)은 action에 담아 전달된다.
+            */
+            const dispatch = useDispatch(); // 상태값을 수정하기 위해 dispatch
 
             const increaseCount = () => {
-
+                dispatch({
+                    type: 'INCREMENT',
+                    payload: {
+                        incrementValue: 1
+                    }
+                })
             }
 
             const decreaseCount = () => {
-
+                dispatch({
+                    type: 'DECREMENT',
+                    payload: {
+                        decrementValue: 1
+                    }
+                })
             }
 
             return (
@@ -75,6 +101,7 @@
             )
         }
         ReactDOM.createRoot(document.getElementById('root')).render(
+            // provider store를 등록을 해야 사용할 수 있다.
             <Provider store={store}>
                 <App />
             </Provider>
